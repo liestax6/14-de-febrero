@@ -28,14 +28,12 @@
 <body>
     <h1>Cuenta regresiva para el evento</h1>
     <div id="countdown"></div>
-    
-    <!-- El enlace ahora está correctamente dentro del contenedor oculto -->
     <div id="linkContainer">
         <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">¡Accede aquí!</a>
     </div>
 
     <script>
-        // Fecha de activación (14 de febrero a las 00:00)
+        // Prueba rápida: cuenta regresiva de 1 minuto
         const targetDate = new Date(new Date().getTime() + 60000).getTime();
         
         function updateCountdown() {
@@ -43,11 +41,8 @@
             const distance = targetDate - now;
             
             if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                const seconds = Math.floor(distance / 1000);
+                document.getElementById("countdown").innerHTML = `${seconds}s`;
             } else {
                 document.getElementById("countdown").innerHTML = "¡El evento ha comenzado!";
                 document.getElementById("linkContainer").style.display = "block";
