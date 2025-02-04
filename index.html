@@ -36,7 +36,7 @@
 
     <script>
         // Fecha de activación (14 de febrero a las 00:00)
-        const targetDate = new Date("Feb 14, 2025 00:00:00").getTime();
+        const targetDate = new Date(new Date().getTime() + 60000).getTime();
         
         function updateCountdown() {
             const now = new Date().getTime();
