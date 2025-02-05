@@ -9,10 +9,21 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         #countdown {
             font-size: 2em;
             margin-bottom: 20px;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
         }
         #linkContainer {
             display: none;
@@ -20,15 +31,23 @@
         }
         a {
             font-size: 1.5em;
-            color: blue;
+            color: white;
+            background-color: #ff4081;
+            padding: 10px 20px;
+            border-radius: 10px;
             text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease-in-out;
+        }
+        a:hover {
+            background-color: #ff79a8;
         }
     </style>
 </head>
 <body>
-    <img src="https://cdn.discordapp.com/attachments/1331871205308895273/1331887217257222174/image.png?ex=67a3bae1&is=67a26961&hm=d378a44c1af2627ac1d7b1e838ddc2cd8a35527b928c72ef31670d322daa6a88&" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px;">
-    <h1>Cuenta regresiva para tu regalo, mi amor 💕</h1>
-    <div id="countdown"></div>
+    <img src="https://cdn.discordapp.com/attachments/1331871205308895273/1331887217257222174/image.png?ex=67a3bae1&is=67a26961&hm=d378a44c1af2627ac1d7b1e838ddc2cd8a35527b928c72ef31670d322daa6a88&" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px; border-radius: 20px;">
+    <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Cuenta regresiva para tu regalo, mi amor 💕</h1>
+    <div id="countdown" style="color: white;"></div>
     <div id="linkContainer">
         <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">¡Accede aquí!</a>
     </div>
