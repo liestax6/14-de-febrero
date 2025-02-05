@@ -42,14 +42,25 @@
         a:hover {
             background-color: #ff79a8;
         }
+        .lock-icon {
+            font-size: 3em;
+            color: white;
+            margin-top: 20px;
+            animation: shake 1s infinite alternate;
+        }
+        @keyframes shake {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
     </style>
 </head>
 <body>
     <img src="https://cdn.discordapp.com/attachments/1331871205308895273/1331887217257222174/image.png?ex=67a3bae1&is=67a26961&hm=d378a44c1af2627ac1d7b1e838ddc2cd8a35527b928c72ef31670d322daa6a88&" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px; border-radius: 20px;">
     <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Cuenta regresiva para tu regalo, mi amor 💕</h1>
     <div id="countdown" style="color: white;"></div>
+    <div class="lock-icon">🔒</div>
     <div id="linkContainer">
-        <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">¡Accede aquí!</a>
+        <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">🔓 ¡Accede aquí!</a>
     </div>
 
     <script>
@@ -69,6 +80,7 @@
             } else {
                 document.getElementById("countdown").innerHTML = "¡El evento ha comenzado!";
                 document.getElementById("linkContainer").style.display = "block";
+                document.querySelector(".lock-icon").style.display = "none";
                 clearInterval(timer);
             }
         }
