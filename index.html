@@ -69,6 +69,16 @@
             border-radius: 10px;
             display: none;
         }
+        .falling-object {
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -112,10 +122,9 @@
         
         updateCountdown();
         const timer = setInterval(updateCountdown, 1000);
-    </script>
-    <script>
+        
         function createFallingObjects() {
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 10; i++) {
                 let element = document.createElement("div");
                 element.className = "falling-object";
                 element.innerHTML = Math.random() > 0.5 ? "❤️" : (Math.random() > 0.5 ? "D" : "V");
@@ -130,7 +139,7 @@
             }
         }
         
-        setInterval(createFallingObjects, 3000);
+        setInterval(createFallingObjects, 2000);
     </script>
 </body>
 </html>
