@@ -54,91 +54,49 @@
             from { transform: rotate(-5deg); }
             to { transform: rotate(5deg); }
         }
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px white; }
-            100% { text-shadow: 0 0 20px white; }
+        @keyframes fireworks {
+            from { opacity: 1; transform: scale(0.8); }
+            to { opacity: 0; transform: scale(2); }
         }
-        .glow {
-            animation: glow 1s infinite alternate;
-        }
-        #messageContainer {
-            font-size: 1.8em;
-            color: white;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            display: none;
-        }
-        .falling-object {
+        .firework {
             position: absolute;
-            font-size: 3em;
-            opacity: 0.9;
-            animation: fall linear infinite;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            border-radius: 50%;
+            animation: fireworks 1s ease-out;
         }
-        @keyframes fall {
-            from { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        .neon-text {
+            font-size: 2em;
+            color: #fff;
+            text-shadow: 0 0 5px #ff4da6, 0 0 10px #ff4da6, 0 0 20px #ff4da6;
         }
     </style>
 </head>
 <body>
-    <img src="https://cdn.discordapp.com/attachments/1331871205308895273/1331876442224721930/IMG_4763.png?ex=67a3b0d8&is=67a25f58&hm=51b0a9a94b78ae478d22586ce3000d984f36c64dfee67e9f86b7cb7f6d4ceeb9&" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px; border-radius: 20px;">
+    <img src="https://cdn.discordapp.com/attachments/1272347469895696428/1292956462875803708/IMG_3842.png?ex=67a5248a&is=67a3d30a&hm=a5123fa5e32abca123269172eec34356d0928c23ee13154461d688b395963bc0&" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px; border-radius: 20px;">
     <div id="falling-objects"></div>
-    <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Cuenta regresiva para tu regalo, mi amor 💕</h1>
-    <div id="countdown" style="color: white;"></div>
+    <h1 class="neon-text">Cuenta regresiva para tu regalo, mi amor 💕</h1>
+    <div id="countdown" class="neon-text"></div>
     <div class="lock-icon">🔒</div>
     <div id="linkContainer">
         <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">🔓 ¡Accede aquí!</a>
     </div>
     <div id="messageContainer">💖 ¡Sorpresa! Te amo muchísimo 💖</div>
     <audio id="romanticAudio" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
-
+    
     <script>
-        const targetDate = new Date("Feb 14, 2025 23:00:00").getTime();
-        
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-                
-                if (distance < 10000) {
-                    document.getElementById("countdown").classList.add("glow");
-                }
-            } else {
-                document.getElementById("countdown").innerHTML = "¡El evento ha comenzado!";
-                document.getElementById("linkContainer").style.display = "block";
-                document.getElementById("messageContainer").style.display = "block";
-                document.querySelector(".lock-icon").style.display = "none";
-                document.getElementById("romanticAudio").play();
-                clearInterval(timer);
+        function showFireworks() {
+            for (let i = 0; i < 20; i++) {
+                let firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = Math.random() * 100 + "vw";
+                firework.style.top = Math.random() * 100 + "vh";
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1000);
             }
         }
-        
-        updateCountdown();
-        const timer = setInterval(updateCountdown, 1000);
-        
-        function createFallingObjects() {
-            for (let i = 0; i < 10; i++) {
-                let element = document.createElement("div");
-                element.className = "falling-object";
-                element.innerHTML = Math.random() > 0.5 ? "❤️" : (Math.random() > 0.5 ? "<b>D</b>" : "<b>V</b>");
-                element.style.left = Math.random() * 100 + "vw";
-                element.style.animationDuration = Math.random() * 5 + 3 + "s";
-                element.onclick = function() {
-                    element.style.transform = "scale(2)";
-                    element.style.opacity = "0";
-                    setTimeout(() => element.remove(), 300);
-                };
-                document.getElementById("falling-objects").appendChild(element);
-            }
-        }
-        
-        setInterval(createFallingObjects, 2000);
+        setInterval(showFireworks, 2000);
     </script>
 </body>
+</html>
