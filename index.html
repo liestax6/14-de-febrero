@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta Regresiva</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap');
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Dancing Script', cursive;
             text-align: center;
             padding: 50px;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
@@ -19,9 +21,12 @@
             to { opacity: 1; }
         }
         #countdown {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 20px;
             animation: pulse 1s infinite alternate;
+            font-family: 'Pacifico', cursive;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
         }
         @keyframes pulse {
             from { transform: scale(1); }
@@ -56,7 +61,7 @@
         }
         .falling-object {
             position: absolute;
-            font-size: 2em;
+            font-size: 2.5em;
             opacity: 0.9;
             animation: fall linear infinite;
         }
@@ -82,8 +87,8 @@
 <body>
     <img src="https://cdn.discordapp.com/attachments/1272347469895696428/1292956462875803708/IMG_3842.png?ex=67a5248a&is=67a3d30a&hm=a5123fa5e32abca123269172eec34356d0928c23ee13154461d688b395963bc0&" alt="Imagen especial" style="width: 60%; max-width: 300px; margin-bottom: 20px; border-radius: 20px;">
     <div id="falling-objects"></div>
-    <h1 class="neon-text">Cuenta regresiva para tu regalo, mi amor 💕</h1>
-    <div id="countdown" class="neon-text"></div>
+    <h1 class="neon-text" style="font-family: 'Dancing Script', cursive; font-size: 3em; color: white; text-shadow: 3px 3px 5px rgba(0,0,0,0.3);">Cuenta regresiva para tu regalo, mi amor 💕</h1>
+    <div id="countdown"></div>
     <div class="lock-icon">🔒</div>
     <div id="linkContainer">
         <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">🔓 ¡Accede aquí!</a>
