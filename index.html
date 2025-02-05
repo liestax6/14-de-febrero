@@ -72,17 +72,17 @@
         .falling-object {
             position: absolute;
             font-size: 3em;
-            opacity: 0.8;
+            opacity: 0.9;
             animation: fall linear infinite;
         }
         @keyframes fall {
-            from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            from { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
             to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <img src="https://cdn.discordapp.com/attachments/1331871205308895273/1331887217257222174/image.png?ex=67a3bae1&is=67a26961&hm=d378a44c1af2627ac1d7b1e838ddc2cd8a35527b928c72ef31670d322daa6a88&" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px; border-radius: 20px;">
+    <img src="https://cdn.discordapp.com/attachments/1331871205308895273/1331887217257222174/image.png" alt="Imagen especial" style="width: 100%; max-width: 600px; margin-bottom: 20px; border-radius: 20px;">
     <div id="falling-objects"></div>
     <h1 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Cuenta regresiva para tu regalo, mi amor 💕</h1>
     <div id="countdown" style="color: white;"></div>
@@ -127,7 +127,7 @@
             for (let i = 0; i < 10; i++) {
                 let element = document.createElement("div");
                 element.className = "falling-object";
-                element.innerHTML = Math.random() > 0.5 ? "❤️" : (Math.random() > 0.5 ? "D" : "V");
+                element.innerHTML = Math.random() > 0.5 ? "❤️" : (Math.random() > 0.5 ? "<b>D</b>" : "<b>V</b>");
                 element.style.left = Math.random() * 100 + "vw";
                 element.style.animationDuration = Math.random() * 5 + 3 + "s";
                 element.onclick = function() {
