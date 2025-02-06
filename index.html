@@ -7,9 +7,10 @@
     <style>
         body {
             text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #ffe6e6;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #a57cc3;
             overflow: hidden;
+            color: #fff;
         }
         img {
             width: 50%;
@@ -17,32 +18,39 @@
             border-radius: 10px;
         }
         h1 {
-            color: #d63384;
-            font-size: 24px;
+            color: #ffccff;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #000;
         }
         #contador {
-            font-size: 30px;
+            font-size: 35px;
             font-weight: bold;
             margin: 20px 0;
-            color: #ff3366;
+            color: #ff99cc;
+            text-shadow: 1px 1px 2px #000;
         }
         #candado {
-            font-size: 50px;
+            font-size: 60px;
             transition: transform 0.5s;
+            display: block;
+            margin: 20px auto;
         }
         #candado.abierto {
             transform: rotate(45deg);
         }
         #link {
             display: none;
-            font-size: 20px;
-            color: #ff3366;
+            font-size: 22px;
+            color: #ffccff;
             text-decoration: none;
+            font-weight: bold;
         }
         .caida {
             position: absolute;
-            font-size: 24px;
-            color: #ff3366;
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffccff;
             animation: caer 5s linear infinite;
         }
         @keyframes caer {
