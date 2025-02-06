@@ -3,85 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuenta Regresiva</title>
+    <title>San Valentín</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap');
-        
         body {
-            font-family: 'Dancing Script', cursive;
             text-align: center;
-            padding: 50px;
-            background: url('https://github.com/liestax6/14-de-febrero/blob/main/DALL%C2%B7E%202025-02-06%2000.37.40%20-%20A%20bouquet%20of%20lush%20pink%20peonies%20in%20full%20bloom%2C%20arranged%20beautifully%20with%20delicate%20green%20leaves.%20The%20background%20is%20soft%20and%20dreamy%2C%20with%20gentle%20lighting.webp') no-repeat center center fixed;
-            background-size: cover;
-            animation: fadeIn 2s ease-in-out;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
             overflow: hidden;
-            position: relative;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        img {
+            width: 50%;
+            margin-top: 20px;
+            border-radius: 10px;
         }
-        #countdown {
-            font-size: 3em;
-            margin-bottom: 20px;
-            animation: pulse 1s infinite alternate;
-            font-family: 'Pacifico', cursive;
-            color: white;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+        h1 {
+            color: #d63384;
+            font-size: 24px;
         }
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
+        #contador {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ff3366;
         }
-        #linkContainer, #messageContainer {
+        #candado {
+            font-size: 50px;
+            transition: transform 0.5s;
+        }
+        #candado.abierto {
+            transform: rotate(45deg);
+        }
+        #link {
             display: none;
-            margin-top: 20px;
-        }
-        a {
-            font-size: 1.5em;
-            color: white;
-            background-color: #ff4081;
-            padding: 15px 25px;
-            border-radius: 15px;
+            font-size: 20px;
+            color: #ff3366;
             text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s ease-in-out, transform 0.2s;
         }
-        a:hover {
-            background-color: #ff79a8;
-            transform: scale(1.1);
-        }
-        .lock-icon {
-            font-size: 3em;
-            color: white;
-            margin-top: 20px;
-            animation: shake 1s infinite alternate;
-        }
-        @keyframes shake {
-            from { transform: rotate(-5deg); }
-            to { transform: rotate(5deg); }
-        }
-        .falling-object {
+        .caida {
             position: absolute;
-            font-size: 2.5em;
-            opacity: 0.9;
-            animation: fall linear infinite;
+            font-size: 24px;
+            color: #ff3366;
+            animation: caer 5s linear infinite;
         }
-        @keyframes fall {
-            from { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        @keyframes caer {
+            from { top: -50px; }
+            to { top: 100vh; }
         }
     </style>
 </head>
 <body>
-    <div id="falling-objects"></div>
-    <h1 class="neon-text" style="font-family: 'Dancing Script', cursive; font-size: 3em; color: white; text-shadow: 3px 3px 5px rgba(0,0,0,0.3);">Cuenta regresiva para tu regalo, mi amor 💕</h1>
-    <div id="countdown"></div>
-    <div class="lock-icon">🔒</div>
-    <div id="linkContainer">
-        <a href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">🔓 ¡Accede aquí!</a>
-    </div>
-    <div id="messageContainer">💖 ¡Sorpresa! Te amo muchísimo 💖</div>
-    <audio id="romanticAudio" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+    <img src="https://raw.githubusercontent.com/liestax6/14-de-febrero/main/DALL%C2%B7E%202025-02-06%2000.37.40%20-%20A%20bouquet%20of%20lush%20pink%20peonies%20in%20full%20bloom%2C%20arranged%20beautifully%20with%20delicate%20green%20leaves.%20The%20background%20is%20soft%20and%20dreamy%2C%20with%20gentle%20lighting.webp" alt="Flores">
+    <h1>Cuenta regresiva para tu regalo, mi amor</h1>
+    <div id="contador"></div>
+    <div id="candado">🔒</div>
+    <a id="link" href="https://www.canva.com/design/DAGeKUrqieM/55TFVNhh1d0aCsS5wTMj_A/edit" target="_blank">¡Tu regalo está aquí! 💖</a>
+    
+    <script>
+        function actualizarContador() {
+            const fechaObjetivo = new Date('February 14, 2025 23:00:00').getTime();
+            const ahora = new Date().getTime();
+            const diferencia = fechaObjetivo - ahora;
+            
+            if (diferencia <= 0) {
+                document.getElementById("contador").innerHTML = "¡Es hora de tu regalo!";
+                document.getElementById("candado").classList.add("abierto");
+                document.getElementById("link").style.display = "block";
+                return;
+            }
+            
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+            
+            document.getElementById("contador").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        }
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+        
+        function crearCaida() {
+            const simbolos = ["❤️", "D", "V"];
+            const simbolo = document.createElement("div");
+            simbolo.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
+            simbolo.classList.add("caida");
+            simbolo.style.left = Math.random() * 100 + "vw";
+            document.body.appendChild(simbolo);
+            
+            simbolo.addEventListener("click", function() {
+                const frases = ["Te amo", "Eres mi todo", "Mi corazón es tuyo", "Siempre juntos"];
+                alert(frases[Math.floor(Math.random() * frases.length)]);
+                simbolo.remove();
+            });
+            
+            setTimeout(() => simbolo.remove(), 5000);
+        }
+        setInterval(crearCaida, 1000);
+    </script>
 </body>
 </html>
